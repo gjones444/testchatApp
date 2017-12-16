@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+//shows room names
   $.ajax({
     method: 'GET',
     url: '/api/chatrooms'
@@ -31,7 +32,7 @@ $(document).ready(function() {
     window.location.href = '/chatroom-joined-' + roomName;
   })
 
-  //Adds new row to Table
+
 
 
   function updateChatRoom() {
@@ -65,7 +66,8 @@ $(document).ready(function() {
 
     updateChatroom();
 
-    $('#whatever').on('submit', function() {
+    $('#submit-this').on('submit', function() {
+      //Adds new row to Table
       $.ajax({
         method: 'POST',
         url: '/api/create-room',
@@ -86,7 +88,7 @@ $(document).ready(function() {
       contentType: 'application/json'
     }).then(function(res) {
       if (res === "null_message") {
-        alert("Please Enter Name")
+        alert("Please Enter Room Name")
       }
       updateChatroom();
     });
